@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        .talk_con{
+            width:600px;
+            height:500px;
+            border:1px solid #666;
+            margin:50px auto 0;
+            background:#f9f9f9;
+        }
+        .talk_show{
+            width:580px;
+            height:420px;
+            border:1px solid #666;
+            background:#fff;
+            margin:10px auto 0;
+            overflow:auto;
+        }
+        .talk_input{
+            width:580px;
+            margin:10px auto 0;
+        }
+        .whotalk{
+            width:80px;
+            height:30px;
+            float:left;
+            outline:none;
+        }
+        .talk_word{
+            width:420px;
+            height:26px;
+            padding:0px;
+            float:left;
+            margin-left:10px;
+            outline:none;
+            text-indent:10px;
+        }
+        .talk_sub{
+            width:56px;
+            height:30px;
+            float:left;
+            margin-left:10px;
+        }
+        .atalk{
+           margin:10px;
+        }
+        .atalk span{
+            display:inline-block;
+            background:#0181cc;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+        .btalk{
+            margin:10px;
+            text-align:right;
+        }
+        .btalk span{
+            display:inline-block;
+            background:#ef8201;
+            border-radius:10px;
+            color:#fff;
+            padding:5px 10px;
+        }
+    </style>
+    <script type="text/javascript">
+    //
+        window.onload = function(){
+            var Words = document.getElementById("words");
+            var Who = document.getElementById("who");
+            var TalkWords = document.getElementById("talkwords");
+            var TalkSub = document.getElementById("talksub");
+
+
+            TalkSub.onclick = function(){
+	            //定义空字符串
+                var str = "";
+                if(TalkWords.value == ""){
+	                 // 消息为空时弹窗
+                    alert("消息不能为空");
+                    return;
+                }
+
+                str1 = '<div class="btalk"><span>我说 :' + TalkWords.value +'</span></div>' ;
+                Words.innerHTML = Words.innerHTML + str1;
+                if(TalkWords.value.includes("你好"))
+                {
+                    var arr1 =["亲亲，你也好啊","亲，有什么问题吗","亲爱的，你好啊【害羞】"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("在吗"))
+                {
+                    var arr1 =["亲亲，我在的","亲，我一直都在的","亲爱的，我在"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("真人"))
+                {
+                    txt="我就是客服本人啦！有什么问题都可以问我啦！";
+                }
+                else if(TalkWords.value.includes("谢谢"))
+                {
+                    var arr1 =["不客气，这是我们应该做的","亲，感谢您的支持","亲爱的，不客气哟！"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("为什么"))
+                {
+                    var arr1 =["亲亲，不要着急哦！","因为爱情，所以~~","客服在认真解答您的问题哦！"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("笑话"))
+                {
+                    var arr1 =["哈哈哈","哈哈哈哈","哈哈哈哈哈","hhhh","真好笑"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("快点"))
+                {
+                    txt="亲，您稍等，我立即为您解决问题";
+                }
+                else if(TalkWords.value.includes("客服"))
+                {
+                    txt="我就是6066邮箱的客服啦，任何问题都可以问我！";
+                }
+                else if(TalkWords.value.includes("人工"))
+                {
+                    var arr1 =["我就是6066邮箱的客服啦，有什么问题都可以问我哦！","已经为您转接人工客服","客服在认真解答您的问题哦！"];
+                    var num = Math.floor(Math.random() * arr1.length);
+                    txt=arr1[num];
+                }
+                else if(TalkWords.value.includes("?"))
+                {
+                    txt="亲亲，在的，我们的邮箱方便快捷，所以亲尽可放心使用!";
+                }
+                else
+                {
+                    var arr =["亲爱的，对不起，我刚接到一个电话,让你久等了","亲爱的~还有更多的客人，别担心，我会一个一个回复的，我已经变成三个头六条胳膊了","谢谢你能来!如果你有任何问题，请随时联系我!期待您的下次光临!","沟通从内心开始，沟通创造价值;我们一定会尽快处理您的问题，请不要直接给出中差评~ ~",
+                        "亲亲，详细描述一你的问题哦！","亲亲，稍等哦！","亲爱的，客服在很认真的回复你了！","?","正在认真聆听","亲可以问点有技术含量的哦！"];
+                    var num1 = Math.floor(Math.random() * arr.length);
+                    var num2 = Math.floor(Math.random() * arr.length);
+                    txt=arr[num1];
+                    str = '<div class="atalk"><span>人工客服：' + arr[num2]  +'</span></div>';
+                    Words.innerHTML = Words.innerHTML + str;
+                }
+                str2 = '<div class="atalk"><span>人工客服：' + txt  +'</span></div>';
+
+                Words.innerHTML = Words.innerHTML + str2;
+                TalkWords.value = ""
+            }
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <div class="talk_con">
+        <div class="talk_show" id="words">
+            <div class="atalk"><span id="asay">人工客服：你好我是6066邮箱在线客服！</span></div>
+<!--            <div class="atalk"><span id="asayy">亲，您好，非常高兴为您服务了，有什么可以为您效劳的呢?</span></div>-->
+            <div class="btalk"><span id="bsay">我说：~~~</span></div>
+        </div>
+        <div class="talk_input">
+            <select class="whotalk" id="who">
+                <option value="1">我说：</option>
+            </select>
+            <input type="text" class="talk_word" id="talkwords">
+            <input type="button" value="发送" class="talk_sub" id="talksub">
+        </div>
+    </div>
+</body>
+</html>
